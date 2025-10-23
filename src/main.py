@@ -104,26 +104,30 @@ async def log_requests(request: Request, call_next):
 # ENDPOINTS
 # ============================================================================
 # Serve frontend static files
-app.mount("/static", StaticFiles(directory="src/frontend"), name="static")
+import os
 
-@app.get("/frontend", response_class=HTMLResponse)
+frontend_dir = os.path.join(os.path.dirname(__file__), "frontend")
+
+app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
+
+@app.get("/", response_class=HTMLResponse)
 async def serve_frontend():
-    """Serve the frontend HTML page"""
-    with open("src/frontend/index.html", "r", encoding="utf-8") as f:
+    """Serve the main frontend HTML file."""
+    with open(os.path.join(frontend_dir, "index.html"), "r", encoding="utf-8") as f:
         return f.read()
 
-@app.get("/", tags=["Root"])
-async def root():
-    """Root endpoint - API information"""
-    return {
-        "message": "Intel Image Classification API",
-        "version": "1.0.0",
-        "endpoints": {
-            "health": "/health",
-            "predict": "/predict",
-            "docs": "/docs"
-        }
-    }
+# @app.get("/", tags=["Root"])
+# async def root():
+#     """Root endpoint - API information"""
+#     return {
+#         "message": "Intel Image Classification API",
+#         "version": "1.0.0",
+#         "endpoints": {
+#             "health": "/health",
+#             "predict": "/predict",
+#             "docs": "/docs"
+#         }
+#     }
 
 @app.get("/health", tags=["Health"])
 async def health_check():

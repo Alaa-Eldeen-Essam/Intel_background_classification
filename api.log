@@ -96,3 +96,127 @@ Exception encountered: Unrecognized keyword arguments: ['batch_shape']
 2025-10-23 13:38:23,153 - src.main - INFO - Response: 404 - Time: 0.002s
 2025-10-23 13:38:23,747 - src.main - INFO - Request: GET /script.js
 2025-10-23 13:38:23,748 - src.main - INFO - Response: 404 - Time: 0.001s
+2025-10-23 15:11:05,452 - src.main - INFO - Shutting down application...
+2025-10-23 15:11:24,743 - src.main - INFO - Starting application...
+2025-10-23 15:11:24,743 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 15:11:24,746 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 15:11:28,523 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 15:11:28,524 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 15:11:28,524 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 15:11:28,525 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 15:11:28,525 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 15:11:31,681 - src.main - INFO - Request: GET /frontend
+2025-10-23 15:11:31,818 - src.main - INFO - Response: 200 - Time: 0.138s
+2025-10-23 15:11:31,901 - src.main - INFO - Request: GET /static/style.css
+2025-10-23 15:11:31,904 - src.main - INFO - Request: GET /static/assets/20207.jpg
+2025-10-23 15:11:31,928 - src.main - INFO - Request: GET /static/assets/20322.jpg
+2025-10-23 15:11:31,942 - src.main - INFO - Response: 200 - Time: 0.041s
+2025-10-23 15:11:31,946 - src.main - INFO - Response: 200 - Time: 0.043s
+2025-10-23 15:11:31,960 - src.main - INFO - Response: 200 - Time: 0.032s
+2025-10-23 15:11:33,027 - src.main - INFO - Request: GET /static/assets/20362.jpg
+2025-10-23 15:11:33,080 - src.main - INFO - Request: GET /static/script.js
+2025-10-23 15:11:33,229 - src.main - INFO - Response: 200 - Time: 0.149s
+2025-10-23 15:11:33,249 - src.main - INFO - Response: 200 - Time: 0.222s
+2025-10-23 15:11:39,072 - src.main - INFO - Request: GET /
+2025-10-23 15:11:39,075 - src.main - INFO - Response: 200 - Time: 0.003s
+2025-10-23 15:11:50,850 - src.main - INFO - Shutting down application...
+2025-10-23 15:12:26,241 - src.main - INFO - Starting application...
+2025-10-23 15:12:26,246 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 15:12:26,271 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 15:12:28,789 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 15:12:28,794 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 15:12:28,799 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 15:12:28,805 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 15:12:28,811 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 15:12:33,493 - src.main - INFO - Request: GET /
+2025-10-23 15:12:33,524 - src.main - INFO - Response: 200 - Time: 0.031s
+2025-10-23 15:12:46,181 - src.main - INFO - Request: POST /predict
+2025-10-23 15:12:46,204 - src.main - INFO - Processing image: 20068.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:12:46,960 - src.main - INFO - Prediction: sea with confidence 0.5031
+2025-10-23 15:12:46,962 - src.main - INFO - Response: 200 - Time: 0.782s
+2025-10-23 15:13:27,814 - src.main - INFO - Request: GET /
+2025-10-23 15:13:27,821 - src.main - INFO - Response: 200 - Time: 0.007s
+2025-10-23 15:13:32,482 - src.main - INFO - Request: POST /predict
+2025-10-23 15:13:32,534 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:13:32,877 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:13:32,878 - src.main - INFO - Response: 200 - Time: 0.396s
+2025-10-23 15:13:46,613 - src.main - INFO - Request: POST /predict
+2025-10-23 15:13:46,616 - src.main - INFO - Processing image: sample-Sample Building.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:13:46,715 - src.main - INFO - Prediction: buildings with confidence 0.8695
+2025-10-23 15:13:46,719 - src.main - INFO - Response: 200 - Time: 0.107s
+2025-10-23 15:14:05,403 - src.main - INFO - Request: POST /predict
+2025-10-23 15:14:05,409 - src.main - INFO - Processing image: sample-Sample Glacier.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:14:05,731 - src.main - INFO - Prediction: sea with confidence 0.4600
+2025-10-23 15:14:05,733 - src.main - INFO - Response: 200 - Time: 0.330s
+2025-10-23 15:16:46,129 - src.main - INFO - Request: GET /
+2025-10-23 15:16:46,134 - src.main - INFO - Response: 200 - Time: 0.005s
+2025-10-23 15:16:50,259 - src.main - INFO - Request: POST /predict
+2025-10-23 15:16:50,310 - src.main - INFO - Processing image: sample-Sample Building.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:16:50,586 - src.main - INFO - Prediction: buildings with confidence 0.8695
+2025-10-23 15:16:50,587 - src.main - INFO - Response: 200 - Time: 0.329s
+2025-10-23 15:16:53,869 - src.main - INFO - Request: POST /predict
+2025-10-23 15:16:53,870 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:16:53,950 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:16:53,952 - src.main - INFO - Response: 200 - Time: 0.083s
+2025-10-23 15:17:00,571 - src.main - INFO - Shutting down application...
+2025-10-23 15:17:15,554 - src.main - INFO - Starting application...
+2025-10-23 15:17:15,554 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 15:17:15,556 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 15:17:17,672 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 15:17:17,673 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 15:17:17,673 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 15:17:17,673 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 15:17:17,674 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 15:17:20,754 - src.main - INFO - Request: GET /
+2025-10-23 15:17:20,759 - src.main - INFO - Response: 200 - Time: 0.004s
+2025-10-23 15:17:24,382 - src.main - INFO - Request: POST /predict
+2025-10-23 15:17:24,475 - src.main - INFO - Processing image: sample-Sample Building.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:17:24,964 - src.main - INFO - Prediction: buildings with confidence 0.8695
+2025-10-23 15:17:24,966 - src.main - INFO - Response: 200 - Time: 0.583s
+2025-10-23 15:17:28,315 - src.main - INFO - Request: POST /predict
+2025-10-23 15:17:28,331 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:17:28,537 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:17:28,537 - src.main - INFO - Response: 200 - Time: 0.223s
+2025-10-23 15:18:54,630 - src.main - INFO - Request: POST /predict
+2025-10-23 15:18:54,655 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:18:54,999 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:18:55,001 - src.main - INFO - Response: 200 - Time: 0.370s
+2025-10-23 15:18:57,531 - src.main - INFO - Request: GET /
+2025-10-23 15:18:57,543 - src.main - INFO - Response: 200 - Time: 0.012s
+2025-10-23 15:19:00,686 - src.main - INFO - Request: POST /predict
+2025-10-23 15:19:00,731 - src.main - INFO - Processing image: sample-Sample Building.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:19:00,839 - src.main - INFO - Prediction: buildings with confidence 0.8695
+2025-10-23 15:19:00,842 - src.main - INFO - Response: 200 - Time: 0.156s
+2025-10-23 15:19:03,503 - src.main - INFO - Request: POST /predict
+2025-10-23 15:19:03,505 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:19:03,690 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:19:03,694 - src.main - INFO - Response: 200 - Time: 0.191s
+2025-10-23 15:20:38,483 - src.main - INFO - Shutting down application...
+2025-10-23 15:20:51,716 - src.main - INFO - Starting application...
+2025-10-23 15:20:51,717 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 15:20:51,719 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 15:20:53,835 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 15:20:53,838 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 15:20:53,839 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 15:20:53,840 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 15:20:53,840 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 15:20:58,247 - src.main - INFO - Request: POST /predict
+2025-10-23 15:20:58,288 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:20:58,872 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:20:58,879 - src.main - INFO - Response: 200 - Time: 0.632s
+2025-10-23 15:21:00,646 - src.main - INFO - Request: GET /
+2025-10-23 15:21:00,709 - src.main - INFO - Response: 200 - Time: 0.064s
+2025-10-23 15:21:05,261 - src.main - INFO - Request: POST /predict
+2025-10-23 15:21:05,264 - src.main - INFO - Processing image: sample-Sample Building.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:21:05,532 - src.main - INFO - Prediction: buildings with confidence 0.8695
+2025-10-23 15:21:05,536 - src.main - INFO - Response: 200 - Time: 0.276s
+2025-10-23 15:21:08,093 - src.main - INFO - Request: POST /predict
+2025-10-23 15:21:08,096 - src.main - INFO - Processing image: sample-Sample Forest.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:21:08,188 - src.main - INFO - Prediction: forest with confidence 0.9996
+2025-10-23 15:21:08,192 - src.main - INFO - Response: 200 - Time: 0.099s
+2025-10-23 15:22:31,751 - src.main - INFO - Request: GET /
+2025-10-23 15:22:31,757 - src.main - INFO - Response: 200 - Time: 0.006s
+2025-10-23 15:23:18,765 - src.main - INFO - Request: POST /predict
+2025-10-23 15:23:18,773 - src.main - INFO - Processing image: sample-Sample Building.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 15:23:18,913 - src.main - INFO - Prediction: buildings with confidence 0.8695
+2025-10-23 15:23:18,914 - src.main - INFO - Response: 200 - Time: 0.149s

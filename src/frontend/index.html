@@ -6,7 +6,7 @@
     <title>Intel Image Classification</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="min-h-screen flex flex-col bg-gray-100">
     <!-- Header -->
@@ -32,10 +32,11 @@
             </div>
             <button id="uploadButton" class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 hidden">Classify Image</button>
             <div id="sampleImages" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <img src="https://via.placeholder.com/150?text=Building" class="sample-image cursor-pointer rounded" alt="Sample Building">
-                <img src="https://via.placeholder.com/150?text=Forest" class="sample-image cursor-pointer rounded" alt="Sample Forest">
-                <img src="https://via.placeholder.com/150?text=Glacier" class="sample-image cursor-pointer rounded" alt="Sample Glacier">
-            </div>
+    <img src="/static/assets/20207.jpg" class="sample-image cursor-pointer rounded" alt="Sample Building">
+    <img src="/static/assets/20322.jpg" class="sample-image cursor-pointer rounded" alt="Sample Forest">
+    <img src="/static/assets/20362.jpg" class="sample-image cursor-pointer rounded" alt="Sample Glacier">
+</div>
+
         </section>
 
         <!-- Loading Spinner -->
@@ -61,11 +62,10 @@
     <!-- Footer -->
     <footer class="bg-white shadow p-6 mt-6">
         <div class="container mx-auto text-center">
-            <p class="text-gray-600">Developed by [Your Name] | Powered by FastAPI & TensorFlow</p>
-            <p class="text-gray-500 mt-2">Contact: your.email@example.com</p>
+            <p class="text-gray-600">Developed by Alaa Eldeen Essam | Powered by FastAPI & TensorFlow</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
