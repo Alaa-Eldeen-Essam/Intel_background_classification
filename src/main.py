@@ -11,6 +11,9 @@ from typing import Dict, Any
 import io
 from PIL import Image
 import time
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
+
 
 # Import custom modules
 from src.model_loader import ModelLoader
@@ -61,7 +64,6 @@ app = FastAPI(
     title=settings.API_TITLE,
     description=settings.API_DESCRIPTION,
     version=settings.API_VERSION,
-    docs_url=settings.API_DESCRIPTION,
     redoc_url="/redoc",
     lifespan=lifespan
 )
@@ -101,6 +103,14 @@ async def log_requests(request: Request, call_next):
 # ============================================================================
 # ENDPOINTS
 # ============================================================================
+# Serve frontend static files
+app.mount("/static", StaticFiles(directory="src/frontend"), name="static")
+
+@app.get("/frontend", response_class=HTMLResponse)
+async def serve_frontend():
+    """Serve the frontend HTML page"""
+    with open("src/frontend/index.html", "r", encoding="utf-8") as f:
+        return f.read()
 
 @app.get("/", tags=["Root"])
 async def root():

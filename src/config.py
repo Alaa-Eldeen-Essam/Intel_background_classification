@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     RELOAD: bool = True
     
     # Model Settings
-    MODEL_PATH: str = "src/models/model_1_simple.keras"
+    MODEL_PATH: str = "src/models/model_1_simple_local.h5"
     IMAGE_SIZE: tuple = (150, 150)
     
     # CORS Settings

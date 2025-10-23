@@ -29,3 +29,70 @@ Exception encountered: Unrecognized keyword arguments: ['batch_shape']
 2025-10-23 11:27:52,577 - src.main - ERROR - Failed to load model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
 
 Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 13:30:37,764 - src.main - INFO - Starting application...
+2025-10-23 13:30:37,765 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 13:30:37,768 - src.model_loader - INFO - Loading model from: src/models/model_1_simple.keras
+2025-10-23 13:30:42,397 - src.model_loader - ERROR - Error loading model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 13:30:42,397 - src.main - ERROR - Failed to load model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 13:32:06,002 - src.main - INFO - Starting application...
+2025-10-23 13:32:06,008 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 13:32:06,023 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 13:32:09,675 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 13:32:09,676 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 13:32:09,676 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 13:32:09,677 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 13:32:09,677 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 13:32:23,194 - src.main - INFO - Request: GET /docs
+2025-10-23 13:32:23,197 - src.main - INFO - Response: 200 - Time: 0.004s
+2025-10-23 13:32:24,285 - src.main - INFO - Request: GET /openapi.json
+2025-10-23 13:32:24,296 - src.main - INFO - Response: 200 - Time: 0.011s
+2025-10-23 13:32:51,579 - src.main - INFO - Request: POST /predict
+2025-10-23 13:32:51,603 - src.main - INFO - Processing image: 20062.jpg - Size: (150, 150), Mode: RGB
+2025-10-23 13:32:52,240 - src.main - INFO - Prediction: forest with confidence 0.9855
+2025-10-23 13:32:52,246 - src.main - INFO - Response: 200 - Time: 0.667s
+2025-10-23 13:34:26,068 - src.main - INFO - Request: GET /classes
+2025-10-23 13:34:26,077 - src.main - INFO - Response: 200 - Time: 0.009s
+2025-10-23 13:35:09,325 - src.main - INFO - Request: POST /predict-batch
+2025-10-23 13:35:09,786 - src.main - INFO - Response: 200 - Time: 0.461s
+2025-10-23 13:35:22,115 - src.main - INFO - Request: GET /health
+2025-10-23 13:35:22,118 - src.main - INFO - Response: 200 - Time: 0.003s
+2025-10-23 13:35:29,243 - src.main - INFO - Request: GET /
+2025-10-23 13:35:29,246 - src.main - INFO - Response: 200 - Time: 0.003s
+2025-10-23 13:36:20,701 - src.main - INFO - Shutting down application...
+2025-10-23 13:37:11,819 - src.main - INFO - Starting application...
+2025-10-23 13:37:11,819 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 13:37:11,821 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 13:37:15,519 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 13:37:15,520 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 13:37:15,520 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 13:37:15,520 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 13:37:15,521 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 13:37:26,197 - src.main - INFO - Request: GET /docs
+2025-10-23 13:37:26,204 - src.main - INFO - Response: 200 - Time: 0.007s
+2025-10-23 13:37:27,178 - src.main - INFO - Request: GET /openapi.json
+2025-10-23 13:37:27,190 - src.main - INFO - Response: 200 - Time: 0.012s
+2025-10-23 13:37:36,461 - src.main - INFO - Request: GET /frontend
+2025-10-23 13:37:36,468 - src.main - ERROR - Unexpected error: [Errno 2] No such file or directory: 'frontend/index.html'
+2025-10-23 13:37:38,248 - src.main - INFO - Request: GET /favicon.ico
+2025-10-23 13:37:38,251 - src.main - INFO - Response: 404 - Time: 0.003s
+2025-10-23 13:37:52,709 - src.main - INFO - Request: GET /frontend
+2025-10-23 13:37:52,711 - src.main - ERROR - Unexpected error: [Errno 2] No such file or directory: 'frontend/index.html'
+2025-10-23 13:37:57,285 - src.main - INFO - Shutting down application...
+2025-10-23 13:38:10,487 - src.main - INFO - Starting application...
+2025-10-23 13:38:10,487 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 13:38:10,490 - src.model_loader - INFO - Loading model from: src/models/model_1_simple_local.h5
+2025-10-23 13:38:13,317 - src.model_loader - INFO - Model loaded successfully!
+2025-10-23 13:38:13,318 - src.model_loader - INFO - Model input shape: (None, 150, 150, 3)
+2025-10-23 13:38:13,319 - src.model_loader - INFO - Model output shape: (None, 6)
+2025-10-23 13:38:13,319 - src.preprocessing - INFO - ImagePreprocessor initialized with target size: (150, 150)
+2025-10-23 13:38:13,320 - src.main - INFO - Model and preprocessor loaded successfully!
+2025-10-23 13:38:23,108 - src.main - INFO - Request: GET /frontend
+2025-10-23 13:38:23,113 - src.main - INFO - Response: 200 - Time: 0.006s
+2025-10-23 13:38:23,151 - src.main - INFO - Request: GET /style.css
+2025-10-23 13:38:23,153 - src.main - INFO - Response: 404 - Time: 0.002s
+2025-10-23 13:38:23,747 - src.main - INFO - Request: GET /script.js
+2025-10-23 13:38:23,748 - src.main - INFO - Response: 404 - Time: 0.001s
