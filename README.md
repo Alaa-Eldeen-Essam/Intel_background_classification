@@ -8,6 +8,7 @@ A FastAPI-based web service for classifying images into six categories: building
 
 
 ## Deployment
+The project is deployed on Railway https://web-production-e69cb.up.railway.app
 
 TAccess the live API documentation here:
 👉 https://web-production-e69cb.up.railway.app/docs
