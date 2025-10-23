@@ -58,10 +58,10 @@ async def lifespan(app: FastAPI):
 
 # Create FastAPI application
 app = FastAPI(
-    title="Intel Image Classification API",
-    description="API for classifying images into 6 categories: buildings, forest, glacier, mountain, sea, street",
-    version="1.0.0",
-    docs_url="/docs",
+    title=settings.API_TITLE,
+    description=settings.API_DESCRIPTION,
+    version=settings.API_VERSION,
+    docs_url=settings.API_DESCRIPTION,
     redoc_url="/redoc",
     lifespan=lifespan
 )
@@ -302,8 +302,8 @@ async def general_exception_handler(request: Request, exc: Exception):
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True,
+        host=settings.HOST,
+        port=settings.PORT,
+        reload=settings.RELOAD,
         log_level="info"
     )

@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 import logging
 from typing import Tuple
-
+from src.config import settings
 logger = logging.getLogger(__name__)
 
 class ImagePreprocessor:
@@ -12,7 +12,7 @@ class ImagePreprocessor:
     Handles all image transformations needed for model inference
     """
     
-    def __init__(self, target_size: Tuple[int, int] = (150, 150)):
+    def __init__(self, target_size: Tuple[int, int] = settings.IMAGE_SIZE):
         """
         Initialize preprocessor
         
