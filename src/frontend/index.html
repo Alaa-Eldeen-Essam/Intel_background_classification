@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel Image Classification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .drag-over { border: 2px dashed #10B981; background-color: #ECFDF5; }
+        .prediction-bar { transition: width 0.5s ease-in-out; }
+        .dark-mode { background-color: #1F2937; color: #F9FAFB; }
+        .dark-mode .bg-white { background-color: #374151; }
+        .dark-mode .bg-gray-100 { background-color: #4B5563; }
+        .history-item:hover { background-color: #F3F4F6; }
+        .dark-mode .history-item:hover { background-color: #6B7280; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow p-6">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold text-gray-900">Intel Image Classification</h1>
+            <p class="mt-2 text-gray-600">Upload an image to classify it into one of six categories: buildings, forest, glacier, mountain, sea, or street.</p>
+            <button id="darkModeToggle" class="mt-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">Toggle Dark Mode</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto flex-grow p-6">
+        <!-- Upload Section -->
+        <section class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Upload Image</h2>
+            <div id="dropZone" class="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-gray-400">
+                <p class="text-gray-500">Drag and drop an image here or click to select</p>
+                <input type="file" id="fileInput" accept="image/jpeg,image/png" class="hidden">
+            </div>
+            <div id="previewContainer" class="mt-4 hidden">
+                <img id="previewImage" class="max-w-full h-auto rounded-lg" alt="Image Preview">
+            </div>
+            <button id="uploadButton" class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 hidden">Classify Image</button>
+            <div id="sampleImages" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <img src="https://via.placeholder.com/150?text=Building" class="sample-image cursor-pointer rounded" alt="Sample Building">
+                <img src="https://via.placeholder.com/150?text=Forest" class="sample-image cursor-pointer rounded" alt="Sample Forest">
+                <img src="https://via.placeholder.com/150?text=Glacier" class="sample-image cursor-pointer rounded" alt="Sample Glacier">
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div>
+        </div>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="bg-white rounded-lg shadow p-6 hidden">
+            <h2 class="text-xl font-semibold mb-4">Prediction Results</h2>
+            <p id="resultText" class="text-lg"></p>
+            <canvas id="confidenceChart" class="mt-4"></canvas>
+            <div id="topPredictions" class="mt-4"></div>
+        </section>
+
+        <!-- Prediction History -->
+        <section id="historySection" class="bg-white rounded-lg shadow p-6 mt-6">
+            <h2 class="text-xl font-semibold mb-4">Prediction History</h2>
+            <div id="historyList" class="space-y-2"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow p-6 mt-6">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-600">Developed by [Your Name] | Powered by FastAPI & TensorFlow</p>
+            <p class="text-gray-500 mt-2">Contact: your.email@example.com</p>
+        </div>
+    </footer>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadButton = document.getElementById('uploadButton');
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImage = document.getElementById('previewImage');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const resultsSection = document.getElementById('resultsSection');
+        const resultText = document.getElementById('resultText');
+        const confidenceChart = document.getElementById('confidenceChart');
+        const topPredictions = document.getElementById('topPredictions');
+        const historyList = document.getElementById('historyList');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        let predictionHistory = [];
+
+        // Drag and Drop
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length) handleFile(files[0]);
+        });
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) handleFile(fileInput.files[0]);
+        });
+
+        // Sample Images
+        document.querySelectorAll('.sample-image').forEach(img => {
+            img.addEventListener('click', () => {
+                fetch(img.src)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const file = new File([blob], `sample-${img.alt}.jpg`, { type: blob.type });
+                        handleFile(file);
+                    });
+            });
+        });
+
+        // File Handling
+        function handleFile(file) {
+            if (!['image/jpeg', 'image/png'].includes(file.type)) {
+                alert('Only JPEG and PNG files are supported.');
+                return;
+            }
+            previewContainer.classList.remove('hidden');
+            uploadButton.classList.remove('hidden');
+            const reader = new FileReader();
+            reader.onload = () => {
+                previewImage.src = reader.result;
+                uploadButton.onclick = () => classifyImage(file);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // API Integration
+        async function classifyImage(file) {
+            loadingSpinner.classList.remove('hidden');
+            resultsSection.classList.add('hidden');
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('http://localhost:8000/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (response.ok) {
+                    displayResults(data);
+                    addToHistory(data);
+                } else {
+                    alert(`Error: ${data.error}`);
+                }
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            } finally {
+                loadingSpinner.classList.add('hidden');
+            }
+        }
+
+        // Display Results
+        function displayResults(data) {
+            resultsSection.classList.remove('hidden');
+            resultText.textContent = `Predicted Class: ${data.class} (${(data.confidence * 100).toFixed(2)}%)`;
+
+            // Top 3 Predictions
+            const top3 = Object.entries(data.predictions)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+            topPredictions.innerHTML = top3.map(([cls, conf]) => `
+                <div class="mt-2">
+                    <div class="flex justify-between">
+                        <span>${cls}</span>
+                        <span>${(conf * 100).toFixed(2)}%</span>
+                    </div>
+                    <div class="bg-gray-200 h-4 rounded">
+                        <div class="bg-green-500 h-4 rounded prediction-bar" style="width: ${conf * 100}%"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Chart
+            new Chart(confidenceChart, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(data.predictions),
+                    datasets: [{
+                        label: 'Confidence',
+                        data: Object.values(data.predictions).map(v => v * 100),
+                        backgroundColor: '#10B981'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, max: 100 }
+                    }
+                }
+            });
+        }
+
+        // Prediction History
+        function addToHistory(data) {
+            predictionHistory.push(data);
+            if (predictionHistory.length > 5) predictionHistory.shift();
+            historyList.innerHTML = predictionHistory.map((item, index) => `
+                <div class="history-item p-2 rounded border">
+                    <p>File: ${item.filename}</p>
+                    <p>Class: ${item.class} (${(item.confidence * 100).toFixed(2)}%)</p>
+                    <p>Time: ${new Date(item.timestamp).toLocaleString()}</p>
+                </div>
+            `).join('');
+        }
+
+        // Dark Mode Toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        });
+
+        // Load Dark Mode Preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

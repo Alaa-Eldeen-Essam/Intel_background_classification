@@ -1,0 +1,31 @@
+2025-10-23 11:18:26,946 - src.main - INFO - Starting application...
+2025-10-23 11:18:26,946 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 11:18:26,947 - src.model_loader - ERROR - Error loading model: Model file not found: models/model_1_simple.h5
+2025-10-23 11:18:26,947 - src.main - ERROR - Failed to load model: Model file not found: models/model_1_simple.h5
+2025-10-23 11:19:04,455 - src.main - INFO - Starting application...
+2025-10-23 11:19:04,456 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 11:19:04,458 - src.model_loader - INFO - Loading model from: src/models/model_1_simple.h5
+2025-10-23 11:19:06,627 - src.model_loader - ERROR - Error loading model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 11:19:06,628 - src.main - ERROR - Failed to load model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 11:20:47,857 - src.main - INFO - Starting application...
+2025-10-23 11:20:47,858 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 11:20:47,859 - src.model_loader - INFO - Loading model from: src/models/model_1_simple.h5
+2025-10-23 11:20:49,434 - src.model_loader - ERROR - Error loading model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 11:20:49,435 - src.main - ERROR - Failed to load model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 11:27:50,379 - src.main - INFO - Starting application...
+2025-10-23 11:27:50,380 - src.main - INFO - Loading model and preprocessor...
+2025-10-23 11:27:50,383 - src.model_loader - INFO - Loading model from: src/models/model_1_simple.keras
+2025-10-23 11:27:52,576 - src.model_loader - ERROR - Error loading model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2025-10-23 11:27:52,577 - src.main - ERROR - Failed to load model: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 150, 150, 3], 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
