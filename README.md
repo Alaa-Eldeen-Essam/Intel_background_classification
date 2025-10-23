@@ -4,6 +4,11 @@ A FastAPI-based web service for classifying images into six categories: building
 
 ![App Screenshot](demo/UI.png)
 
+#########################################################
+
+deployment link on Railway https://web-production-e69cb.up.railway.app/docs
+
+#########################################
 
 ## 🚀 Features
 
