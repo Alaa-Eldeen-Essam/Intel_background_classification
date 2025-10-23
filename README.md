@@ -2,6 +2,9 @@
 
 A FastAPI-based web service for classifying images into six categories: buildings, forest, glacier, mountain, sea, and street. This project includes a complete machine learning pipeline with model training, REST API, and a responsive web frontend.
 
+![App Screenshot](demo/UI.png)
+
+
 ## 🚀 Features
 
 - **Image Classification**: Classify images into 6 predefined categories using a trained CNN model
@@ -13,6 +16,9 @@ A FastAPI-based web service for classifying images into six categories: building
 - **Error Handling**: Robust error handling with detailed responses
 - **CORS Support**: Cross-origin resource sharing enabled
 - **Deployment Ready**: Includes Procfile for easy deployment
+
+![App Screenshot](demo/results.png)
+
 
 ## 📋 Requirements
 
