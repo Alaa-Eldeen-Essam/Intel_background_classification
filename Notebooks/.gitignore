@@ -1,0 +1,4 @@
+*.zip
+/seg_test
+/seg_train
+/seg_pred
