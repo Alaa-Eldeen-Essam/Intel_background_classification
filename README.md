@@ -1,6 +1,7 @@
 # Intel Image Classification API
 
 A FastAPI-based web service for classifying images into six categories: buildings, forest, glacier, mountain, sea, and street. This project includes a complete machine learning pipeline with model training, REST API, and a responsive web frontend.
+![App Screenshot](UI.png)
 
 ## 🚀 Features
 
