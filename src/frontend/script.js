@@ -75,8 +75,13 @@ async function classifyImage(file) {
     const formData = new FormData();
     formData.append('file', file);
 
+    // 🌐 Automatically detect API base URL
+    const baseURL = window.location.origin.includes('localhost') 
+        ? 'http://localhost:8000'     // Local backend
+        : window.location.origin;      // Deployed backend (same domain)
+
     try {
-        const response = await fetch('http://localhost:8000/predict', {
+        const response = await fetch(`${baseURL}/predict`, {
             method: 'POST',
             body: formData
         });
@@ -94,6 +99,7 @@ async function classifyImage(file) {
         loadingSpinner.classList.add('hidden');
     }
 }
+
 
 // -------------------- Display Results (Reusable Chart) --------------------
 function displayResults(data) {
